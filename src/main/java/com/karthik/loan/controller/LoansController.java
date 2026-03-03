@@ -29,13 +29,13 @@ public class LoansController
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<ResponseDto> fetchLoanDetails(@RequestParam String mobileNumber)
+    public ResponseEntity<LoansDto> fetchLoanDetails(@RequestParam String mobileNumber)
     {
         LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new ResponseDto(LoanConstants.STATUS_200, LoanConstants.MESSAGE_200));
+                .body(loansDto);
 
     }
 
