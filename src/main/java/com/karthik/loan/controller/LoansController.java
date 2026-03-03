@@ -27,4 +27,15 @@ public class LoansController
                 .status(HttpStatus.CREATED)
                 .body(new ResponseDto(LoanConstants.STATUS_201, LoanConstants.MESSAGE_201));
     }
+
+    @GetMapping("/fetch")
+    public ResponseEntity<ResponseDto> fetchLoanDetails(@RequestParam String mobileNumber)
+    {
+        LoansDto loansDto = iLoansService.fetchLoan(mobileNumber);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseDto(LoanConstants.STATUS_200, LoanConstants.MESSAGE_200));
+
+    }
 }
